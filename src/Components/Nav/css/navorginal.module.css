@@ -1,0 +1,26 @@
+.container{
+ width: 100% !important;
+ height: 100px !important;
+ background-color: rgb(228, 219, 236)!important;
+ display: flex!important;
+justify-content: space-between !important;
+}
+
+.imges{
+    width: 120px !important;
+    height: 120px !important;
+    margin-top: -10px !important;
+}
+.imges img{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.login{
+    width: 300px !important;
+    height: 100%!important;
+    display: flex !important;
+    gap: 20px;
+    justify-content: center !important;
+    align-items: center !important;
+}

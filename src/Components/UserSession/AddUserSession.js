@@ -1,0 +1,62 @@
+import React, { Fragment,useState } from 'react'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import style from '../../Routes/css/register.module.css'
+import axios from 'axios'
+
+const AddUserSession = () => {
+    const [userData,setuserData] =  useState({
+        assignment: "",
+        question:"",
+        feedback:"",
+        })
+       
+            const  params =useParams((e)=>e  )
+            const[Errors,setErrors] = useState([])
+            const Navigate =  useNavigate( )
+            const sumbitData=()=>{
+              axios.post(`http://localhost:5000/api/session/${params.diploma}/${params.group}/addsession`, userData,{withCredentials:true})
+              .then((resp)=>{if(resp.data.status === 'success'){
+                  console.log(resp);    
+                  setErrors([])
+                      Navigate('/groups');
+              }
+                 } ).catch((er)=> { console.log(er.response?.data?.message?.message); setErrors( er.response?.data?.message) } ) }
+  return (
+    <Fragment>
+    <div  className={style.container}>{
+    }
+    
+    <form className={style.form} onSubmit={(e)=>e.preventDefault()}>
+<p className={style.title}>Add Session </p>
+{  
+Errors?.length >0 ?  Errors?.map((e,idx)=> <> <p key={idx} className={style.po}>  {e} </p></>)  : <p> welcome</p>
+} 
+<label className={style.label} >
+    <input className={style.input} type="text" placeholder="" required="" onChange={(e)=>setuserData({...userData,assignment:e.target.value})}/>
+    <span className={style.span}> Assignment</span>
+</label> 
+<label className={style.label}>
+    <input className={style.input} type="text" placeholder="" required="" onChange={(e)=>setuserData({...userData,question:e.target.value})}/>
+    <span className={style.span}>Question</span>
+</label>
+<label className={style.label}>
+    <input className={style.input} type="text" placeholder="" required="" onChange={(e)=>setuserData({...userData,feedback:e.target.value})}/>
+    <span className={style.span}>Feedback</span>
+</label>
+<button className={style.submit} onClick={sumbitData}>Submit</button>
+</form>
+<button className={style.cta} >
+<NavLink  className={style.a1} to={'/session/All/N1'}>
+<span className={style.span1}>Back</span>
+<svg className={style.svg} width="15px" height="10px" viewBox="0 0 13 10">
+<path className={style.path} d="M1,5 L11,5"></path>
+<polyline className={style.polyline} points="8 1 12 5 8 9"></polyline>
+</svg>
+</NavLink>
+</button>
+</div>
+    </Fragment>
+  )
+}
+
+export default AddUserSession

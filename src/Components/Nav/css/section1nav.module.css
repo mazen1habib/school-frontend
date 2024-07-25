@@ -1,0 +1,14 @@
+.container{
+    width: 250px !important;
+    height: 84.5vh !important;
+    display: block !important;
+    gap: 20px !important;
+    background-color: rgb(207, 207, 211) !important;
+    
+}
+.container .navdata a {
+    text-decoration: none !important ;
+ }
+.container .navdata{
+    display: flex !important;
+}

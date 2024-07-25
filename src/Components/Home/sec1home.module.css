@@ -1,0 +1,15 @@
+.con{
+    width: 80%;
+    height: 84.6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50px;
+}
+.container{
+    width: 80%;
+    height: 82vh;
+    background-image: url(../images/—Pngtree—online\ school\ logo_6845946.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
